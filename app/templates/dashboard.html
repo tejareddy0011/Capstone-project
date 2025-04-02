@@ -1,0 +1,99 @@
+{% extends 'base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Overview Cards -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="dashboard-card" id="active-jobs-card">
+                <div>
+                    <h4 class="font-weight-bold mb-2">Active Job Postings</h4>
+                    <p id="active-jobs-count" class="text-muted">Loading...</p>
+                </div>
+                <i class="fas fa-briefcase fa-3x"></i>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dashboard-card" id="applications-card">
+                <div>
+                    <h4 class="font-weight-bold mb-2">Total Applications</h4>
+                    <p id="total-applicants-count" class="text-muted">Loading...</p>
+                </div>
+                <i class="fas fa-file-alt fa-3x"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Posting Form and Recent Applications -->
+    <div class="row">
+        <!-- Job Posting Form -->
+        <div class="col-md-6 mb-4">
+            <div class="p-4 bg-white shadow-sm rounded">
+                <h3 class="mb-4 text-primary font-weight-bold">Post a New Job</h3>
+                <form action="{{ url_for('main.post_job') }}" method="POST">
+                    <div class="form-group">
+                        <label for="jobTitle" class="font-weight-bold">Job Title</label>
+                        <input type="text" name="jobTitle" id="jobTitle" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobLocation" class="font-weight-bold">Location</label>
+                        <input type="text" name="jobLocation" id="jobLocation" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobType" class="font-weight-bold">Job Type</label>
+                        <select name="jobType" id="jobType" class="form-control" required>
+                            <option>Full-Time</option>
+                            <option>Part-Time</option>
+                            <option>Contract</option>
+                            <option>Remote</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobDescription" class="font-weight-bold">Description</label>
+                        <textarea name="jobDescription" id="jobDescription" class="form-control" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience" class="font-weight-bold">Experience</label>
+                        <input type="text" name="experience" id="experience" class="form-control" placeholder="5+" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills" class="font-weight-bold">Skills</label>
+                        <input type="text" name="skills" id="skills" class="form-control" placeholder="Python, Flutter, etc" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Post Job</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Recent Applications -->
+        <div class="col-md-6">
+            <div class="p-4 bg-white shadow-sm rounded">
+                <h3 class="mb-4 text-primary font-weight-bold">Recent Applications</h3>
+                <ul class="list-group">
+                    {% for application in recent_applications %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ application.user.username }}</strong> applied for <em>{{ application.job.title }}</em>
+                            </div>
+                            <div>
+                                
+                            </div>
+                        </li>
+                    {% endfor %}
+                    {% if not recent_applications %}
+                        <li class="list-group-item text-center">No recent applications found.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

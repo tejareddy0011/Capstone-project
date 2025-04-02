@@ -1,0 +1,26 @@
+{% extends 'base_dashboard.html' %}
+{% block content %}
+
+<div class="container">
+    <h2 class="my-4">Applications for Your Job Postings</h2>
+
+    {% if applications %}
+        <ul class="list-group">
+            {% for application in applications %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ application.user.username }}</strong> applied for 
+                        <em>{{ application.job.title }}</em> at 
+                        <span class="text-muted">{{ application.applied_at.strftime('%Y-%m-%d') }}</span>
+                    </div>
+                    <a href="{{ url_for('main.serve_cv', filename=application.cv_filename) }}" class="btn btn-primary btn-sm" target="_blank">View CV</a>
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">No applications found for your job postings.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

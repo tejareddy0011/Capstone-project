@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f6fa;
+        }
+        .job-header {
+            margin-top: 20px;
+            padding: 30px;
+            background-color: #4a90e2;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .job-details {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .btn-apply {
+            font-size: 1.1em;
+            padding: 12px 25px;
+            font-weight: bold;
+        }
+        .job-meta {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .job-section {
+            margin-bottom: 25px;
+        }
+        .job-section h5 {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .job-details ul {
+            padding-left: 20px;
+            color: #555;
+        }
+        .job-details ul li {
+            margin-bottom: 8px;
+        }
+        .modal-header {
+            background-color: #4a90e2;
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .modal-content {
+            border-radius: 8px;
+        }
+        .form-control {
+            border-radius: 6px;
+        }
+        .btn-primary {
+            background-color: #4a90e2;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        
+        <div class="job-header">
+            <h2>Software Engineer</h2>
+            <p class="lead">Tech Corp, New York, NY</p>
+            <p class="job-meta"><i class="far fa-clock"></i> Posted 2 days ago | <i class="fas fa-map-marker-alt"></i> Remote Friendly</p>
+        </div>
+
+        <div class="job-details mt-4">
+            <div class="job-section">
+                <h5>Job Description</h5>
+                <p>As a Software Engineer at Tech Corp, you will work on a range of innovative projects. You will collaborate with our engineering and design teams to deliver high-quality solutions that improve the experience of our customers. This position offers the opportunity to work in a dynamic environment where you can grow professionally and make a significant impact.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 job-section">
+                    <h5>Responsibilities</h5>
+                    <ul>
+                        <li>Develop, test, and deploy web applications using JavaScript, Python, and SQL.</li>
+                        <li>Collaborate with designers and product managers to create intuitive user experiences.</li>
+                        <li>Maintain high standards for code quality and performance.</li>
+                        <li>Participate in code reviews and provide constructive feedback to team members.</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 job-section">
+                    <h5>Qualifications</h5>
+                    <ul>
+                        <li>2-5 years of experience in software development.</li>
+                        <li>Proficiency in JavaScript (React or Angular), Python, and SQL.</li>
+                        <li>Strong problem-solving skills and a growth mindset.</li>
+                        <li>Excellent communication and teamwork abilities.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job-section">
+                <h5>Benefits</h5>
+                <ul>
+                    <li>Competitive salary and performance bonuses.</li>
+                    <li>Health, dental, and vision insurance.</li>
+                    <li>401(k) matching and stock options.</li>
+                    <li>Flexible work hours and remote work options.</li>
+                </ul>
+            </div>
+
+            <!-- Apply Button with Modal -->
+            <div class="text-center">
+                <button class="btn btn-primary btn-apply mt-3" data-toggle="modal" data-target="#applyModal">
+                    <i class="fas fa-paper-plane"></i> Apply Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apply Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="applyModalLabel">Apply for Software Engineer</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="applicantName">Full Name</label>
+                            <input type="text" id="applicantName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicantEmail">Email</label>
+                            <input type="email" id="applicantEmail" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicantResume">Upload Resume</label>
+                            <input type="file" id="applicantResume" class="form-control-file" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="applicantMessage">Cover Letter</label>
+                            <textarea id="applicantMessage" class="form-control" rows="4" placeholder="Write a brief cover letter"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
